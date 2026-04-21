@@ -206,10 +206,11 @@ a { color: inherit; }
   color: rgba(15, 23, 42, 0.82);
   line-height: 1.65;
   font-size: 0.95rem;
-  display: -webkit-box;
+  
+  /*display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  overflow: hidden;
+  overflow: hidden;*/
 }
 .card-footer {
   padding: 16px 20px 20px;
