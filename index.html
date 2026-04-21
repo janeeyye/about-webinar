@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microsoft Korea Online Webinars</title>
+    <meta name="description" content="관심있는 온라인 웨비나에 등록해보세요!" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="container">
+        <header class="hero">
+          <div class="hero-copy">
+            <h1 id="pageTitle">Microsoft Korea Online Webinars</h1>
+            <p id="pageSubtitle">관심있는 온라인 웨비나에 등록해보세요!</p>
+          </div>
+          <div class="hero-actions">
+            <a id="heroCta" class="hero-link" href="#eventGrid">웨비나 보기</a>
+          </div>
+        </header>
+
+        <section class="toolbar" aria-label="웨비나 필터">
+          <div id="filterBar" class="filter-bar"></div>
+          <div class="toolbar-meta">
+            <span id="resultsMeta">전체 웨비나 0개</span>
+          </div>
+        </section>
+
+        <section id="eventGrid" class="event-grid" aria-live="polite"></section>
+
+        <section id="emptyState" class="empty-state hidden">
+          <div class="empty-card">
+            <div class="empty-icon">📅</div>
+            <h2>표시할 웨비나가 없습니다</h2>
+            <p>현재 선택한 카테고리에 등록된 웨비나가 없습니다. 다른 필터를 선택해 보세요.</p>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          <p id="footerText">본 페이지는 외부 공개용 행사 일정이며, 일정 및 세부 정보는 변경될 수 있습니다.</p>
+        </footer>
+      </main>
+    </div>
+
+    <template id="eventCardTemplate">
+      <article class="event-card">
+        <div class="card-topbar"></div>
+        <div class="card-body">
+          <div class="card-meta-row">
+            <span class="category-badge"></span>
+            <div class="difficulty" aria-label="난이도"></div>
+          </div>
+          <h2 class="event-title"></h2>
+          <div class="hashtag-row hidden"></div>
+          <div class="detail-row date-row">
+            <span class="detail-icon">🗓</span>
+            <span class="detail-text"></span>
+          </div>
+          <p class="event-description"></p>
+          <div class="detail-row audience-row">
+            <span class="detail-icon">👥</span>
+            <span class="detail-text"></span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="register-link" target="_blank" rel="noopener noreferrer">
+            Register <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    </template>
+
+    <script src="./main.js" defer></script>
+  </body>
+</html>
