@@ -173,10 +173,6 @@ function renderCards(events) {
 
 function applySiteConfig() {
   const config = state.siteConfig || {};
-  if (config.title) {
-    document.title = config.title;
-    pageTitleEl.textContent = config.title;
-  }
   if (config.subtitle) pageSubtitleEl.textContent = config.subtitle;
   if (config.footerText) footerTextEl.textContent = config.footerText;
   if (config.heroCtaText) heroCtaEl.textContent = config.heroCtaText;
