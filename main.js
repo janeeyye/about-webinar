@@ -175,7 +175,7 @@ function applySiteConfig() {
   const config = state.siteConfig || {};
   if (config.subtitle) pageSubtitleEl.textContent = config.subtitle;
   if (config.footerText) footerTextEl.textContent = config.footerText;
-  if (config.heroCtaText) heroCtaEl.textContent = config.heroCtaText;
+  if (config.heroCtaText && heroCtaEl) heroCtaEl.textContent = config.heroCtaText;
 }
 
 function render() {
