@@ -169,9 +169,13 @@ a { color: inherit; }
 .difficulty {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  color: #f59e0b;
-  font-size: 0.9rem;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #E6F9FB;
+  color: #008C95;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
 }
 .event-title {
   margin: 0;
