@@ -26,12 +26,12 @@
   {
     "category": "Copilot",
     "difficulty": 1,
-    "title": "모두를 위한 AI, Copilot Chat: 업무에 바로 활용할 수 있는 인사이트",
-    "date": "2026-04-30",
+    "title": "모두를 위한 AI, 업무에 맞게 골라 쓰는 AI 에이전트",
+    "date": "2026-06-10",
     "time": "14:00",
-    "description": "Copilot Chat을 활용해 이메일, 보고서, 자료 정리 등 반복 업무를 효율화하는 실전 방법을 다루는 세션입니다. 프롬프트 작성법, 파일 기반 분석, Outlook·Word·Excel·PowerPoint와의 연계를 통해 실제 업무 흐름에서 바로 활용하는 방법을 소개합니다. 또한 Copilot Pages, 이미지 생성 등 최신 기능을 업무에 연결하는 방식도 함께 살펴봅니다. AI를 어디서부터 활용해야 할지 고민하는 실무자에게 적합한 입문·실전 세션입니다.",
+    "description": "Microsoft 365 Copilot에서 바로 활용할 수 있는 기본 제공 에이전트와, 내 업무에 맞는 에이전트를 직접 만드는 방법을 소개하는 세션입니다. Researcher, Analyst, Facilitator 등 업무 상황별로 적합한 에이전트를 선택하는 기준을 살펴보고, Copilot Studio Lite(Agent Builder)를 통해 코드 없이 나만의 에이전트를 구성하는 방법을 확인할 수 있습니다. Copilot Cowork를 활용해 업무를 맡기고 결과를 받는 새로운 일하는 방식도 함께 경험해 보세요.",
     "targetAudience": [],
-    "registrationUrl": "https://msevents.microsoft.com/event?id=0430946227287",
+    "registrationUrl": "https://msevents.microsoft.com/event?id=1019572678&ocid=lp_pg517835_gdc_comm_mw",
     "hashtags": "",
     "id": "event-1776906817994"
   },
