@@ -72,6 +72,26 @@ function formatDateTimeKST(date, time) {
   return time ? `${formattedDate} · ${time}` : formattedDate;
 }
 
+function isPastEvent(event) {
+  if (!event.date) return false;
+
+  const [year, month, day] = event.date.split('-').map(Number);
+
+  const timeText = String(event.time || '00:00')
+    .split('~')[0]
+    .trim();
+
+  const [hour = 0, minute = 0] = timeText.split(':').map(Number);
+
+  const eventDateKST = new Date(
+    `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00+09:00`
+  );
+
+  const now = new Date();
+
+  return now > eventDateKST;
+}
+
 function buildDifficulty(level) {
   const normalized = String(level || '').trim().toLowerCase();
   const map = {
@@ -124,6 +144,44 @@ function createTag(tag) {
   return span;
 }
 
+function updateRegisterLink(link, event) {
+  const isPast = isPastEvent(event);
+  const hasRegistrationUrl = event.registrationUrl && event.registrationUrl.trim() !== '';
+
+  link.removeAttribute('aria-disabled');
+  link.style.pointerEvents = '';
+  link.style.opacity = '';
+
+  if (!isPast && !hasRegistrationUrl) {
+    link.textContent = '추후 공개 예정';
+    link.removeAttribute('href');
+    link.setAttribute('aria-disabled', 'true');
+    link.style.pointerEvents = 'none';
+    link.style.opacity = '0.5';
+    return;
+  }
+
+  if (isPast && !hasRegistrationUrl) {
+    link.textContent = '세션 종료';
+    link.removeAttribute('href');
+    link.setAttribute('aria-disabled', 'true');
+    link.style.pointerEvents = 'none';
+    link.style.opacity = '0.5';
+    return;
+  }
+
+  if (!isPast && hasRegistrationUrl) {
+    link.textContent = '지금 등록하기 →';
+    link.href = event.registrationUrl;
+    return;
+  }
+
+  if (isPast && hasRegistrationUrl) {
+    link.textContent = '세션 다시보기 →';
+    link.href = event.registrationUrl;
+  }
+}
+
 function renderCards(events) {
   eventGridEl.innerHTML = '';
 
@@ -146,25 +204,20 @@ function renderCards(events) {
     title.textContent = event.title || '(Untitled)';
     dateRow.textContent = formatDateTimeKST(event.date, event.time);
     desc.textContent = event.description || '';
+
     const audienceList = normalizeTargetAudience(event.targetAudience);
     if (audienceList.length) {
       audience.textContent = audienceList.join(', ');
     } else {
       fragment.querySelector('.audience-row')?.remove();
     }
-    link.href = event.registrationUrl || '#';
+
+    updateRegisterLink(link, event);
 
     const tags = String(event.hashtags || '').split(/\s+/).filter(Boolean);
     if (tags.length) {
       hashtagRow.classList.remove('hidden');
       tags.forEach((tag) => hashtagRow.appendChild(createTag(tag)));
-    }
-
-    if (!event.registrationUrl) {
-      link.removeAttribute('href');
-      link.setAttribute('aria-disabled', 'true');
-      link.style.pointerEvents = 'none';
-      link.style.opacity = '0.5';
     }
 
     eventGridEl.appendChild(fragment);
