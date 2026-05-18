@@ -61,6 +61,18 @@
   },
   {
     "category": "Copilot",
+    "difficulty": 1,
+    "title": "모두를 위한 AI, Copilot Chat: 업무에 바로 활용할 수 있는 인사이트",
+    "date": "2026-04-30",
+    "time": "13:00",
+    "description": "Copilot Chat을 활용해 이메일, 보고서, 자료 정리 등 반복 업무를 효율화하는 실전 방법을 다루는 세션입니다. 프롬프트 작성법, 파일 기반 분석, Outlook·Word·Excel·PowerPoint와의 연계를 통해 실제 업무 흐름에서 바로 활용하는 방법을 소개합니다. 또한 Copilot Pages, 이미지 생성 등 최신 기능을 업무에 연결하는 방식도 함께 살펴봅니다. AI를 어디서부터 활용해야 할지 고민하는 실무자에게 적합한 입문·실전 세션입니다.",
+    "targetAudience": [],
+    "registrationUrl": "https://info.microsoft.com/KO-CAW-VDEO-FY26-04Apr-30-AI-for-everyone-Copilot-Chat-Insights-that-can-be-immediately-applied-to-work-SRGCM16244_LP01-Registration---Form-in-Body.html?ocid=lp_pg517835_gdc_comm_mw",
+    "hashtags": "",
+    "id": "event-1776906817994"
+  },
+  {
+    "category": "Copilot",
     "difficulty": 2,
     "title": "보안과 생산성을 동시에 확보하는 AI 전략: 리더를 위한 실행 가이드",
     "date": "2026-05-28",
