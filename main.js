@@ -75,21 +75,14 @@ function formatDateTimeKST(date, time) {
 function isPastEvent(event) {
   if (!event.date) return false;
 
-  const [year, month, day] = event.date.split('-').map(Number);
+  const todayKST = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
 
-  const timeText = String(event.time || '00:00')
-    .split('~')[0]
-    .trim();
-
-  const [hour = 0, minute = 0] = timeText.split(':').map(Number);
-
-  const eventDateKST = new Date(
-    `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00+09:00`
-  );
-
-  const now = new Date();
-
-  return now > eventDateKST;
+  return todayKST > event.date;
 }
 
 function buildDifficulty(level) {
@@ -146,15 +139,15 @@ function createTag(tag) {
 
 function updateRegisterLink(link, event) {
   const isPast = isPastEvent(event);
-  const hasRegistrationUrl = event.registrationUrl && event.registrationUrl.trim() !== '';
+  const hasRegistrationUrl = typeof event.registrationUrl === 'string' && event.registrationUrl.trim() !== '';
 
+  link.removeAttribute('href');
   link.removeAttribute('aria-disabled');
   link.style.pointerEvents = '';
   link.style.opacity = '';
 
   if (!isPast && !hasRegistrationUrl) {
     link.textContent = '추후 공개 예정';
-    link.removeAttribute('href');
     link.setAttribute('aria-disabled', 'true');
     link.style.pointerEvents = 'none';
     link.style.opacity = '0.5';
@@ -163,7 +156,6 @@ function updateRegisterLink(link, event) {
 
   if (isPast && !hasRegistrationUrl) {
     link.textContent = '세션 종료';
-    link.removeAttribute('href');
     link.setAttribute('aria-disabled', 'true');
     link.style.pointerEvents = 'none';
     link.style.opacity = '0.5';
@@ -187,7 +179,6 @@ function renderCards(events) {
 
   events.forEach((event) => {
     const fragment = template.content.cloneNode(true);
-    const card = fragment.querySelector('.event-card');
     const topbar = fragment.querySelector('.card-topbar');
     const badge = fragment.querySelector('.category-badge');
     const difficulty = fragment.querySelector('.difficulty');
